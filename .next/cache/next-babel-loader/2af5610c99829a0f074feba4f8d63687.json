@@ -1,0 +1,1 @@
+{"ast":null,"code":"","map":{"version":3,"sources":[],"names":[],"mappings":"","sourcesContent":["import { getData } from \"../lib/data\";\n\nexport async function getStaticProps() {\n  const allData = getData();\n  return {\n    props: {\n      allData\n    }\n  };\n}\n"]},"metadata":{},"sourceType":"module"}
