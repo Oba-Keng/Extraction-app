@@ -1,22 +1,25 @@
-import { getData } from "../lib/data";
+// import { getData } from "../lib/data";
+import fetch from "isomorphic-unfetch";
 
-export default function Home({ allData }) {
-  return (
-    <section>
-      {allData.map(({ title, id }) => (
-        <div key={id}>
-          {title}
-        </div>
-      ))}
-    </section>
-  );
+export default function LoadBook(props) {
+  const sorted = props.data.split(" ");
+
+  return <div>{props.sorted}</div>;
 }
 
-export async function getStaticProps() {
-  const allData = getData();
-  return {
-    props: {
-      allData
-    }
-  };
-}
+LoadBook.getInitialProps = async function() {
+  const res = await fetch("http://www.gutenberg.org/files/2600/2600-0.txt");
+
+  const data = await res.text();
+
+  return { data };
+};
+
+// export async function getStaticProps() {
+//   const allData = getData();
+//   return {
+//     props: {
+//       allData
+//     }
+//   };
+// }
