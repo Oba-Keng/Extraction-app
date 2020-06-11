@@ -2,9 +2,7 @@
 import fetch from "isomorphic-unfetch";
 
 export default function LoadBook(props) {
-  const sorted = props.data.split(" ");
-
-  return <div>{props.sorted}</div>;
+  return <div>{props.data}</div>;
 }
 
 LoadBook.getInitialProps = async function() {
@@ -12,7 +10,7 @@ LoadBook.getInitialProps = async function() {
 
   const data = await res.text();
 
-  return { data };
+  return {data};
 };
 
 // export async function getStaticProps() {
